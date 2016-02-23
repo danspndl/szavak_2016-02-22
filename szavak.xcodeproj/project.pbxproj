@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		BE915F251C7CBC410030BE52 /* szavak */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = szavak; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE915F281C7CBC410030BE52 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		BEF6F4F71C7CBCBA00DB8C1A /* szoveg.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = szoveg.txt; sourceTree = "<group>"; };
+		BEF6F4F81C7CBCC300DB8C1A /* letra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = letra.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,9 @@
 		BE915F271C7CBC410030BE52 /* szavak */ = {
 			isa = PBXGroup;
 			children = (
+				BEF6F4F81C7CBCC300DB8C1A /* letra.txt */,
 				BE915F281C7CBC410030BE52 /* main.cpp */,
+				BEF6F4F71C7CBCBA00DB8C1A /* szoveg.txt */,
 			);
 			path = szavak;
 			sourceTree = "<group>";
@@ -237,6 +241,7 @@
 				BE915F2E1C7CBC410030BE52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
