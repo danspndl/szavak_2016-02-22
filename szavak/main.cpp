@@ -18,12 +18,12 @@ void t1(){
     string userInput="";
     char charCond[5]={'a','e','i','o','u'};
     int result=0;
-    
+
     cout<<"1. feladat"<<endl;
     cout<<"Type in a word: ";
-    // cin>>userInput;
+    cin>>userInput;
     userInput="loremipsum"; // DEBUG
-    
+
     for(int i=0; i<userInput.length();i++){
         char charTemp=userInput[i];
         for(int c=0; c<5;c++){
@@ -40,9 +40,10 @@ void t1(){
 }
 
 void t2(){
+    ifstream fileInput("szoveg.txt");
     string maxStr="";
     string tempStr="";
-    
+
     // Get input from file
     while(!fileInput.eof()) {
         getline(fileInput,tempStr);
@@ -50,67 +51,79 @@ void t2(){
             maxStr=tempStr;
         }
     }
-    
+
     cout<<"2. feladat"<<endl;
-    cout<<"Leghosszabb szo: "<<maxStr<<", hossza: "<<maxStr.length()<<" karakter"<<endl;
+    cout<<"Leghosszabb szo: "<<maxStr<<", hossza: "<<maxStr.length()<<endl;
+    fileInput.close();
 }
 
 void t3(){
-    int mghNum=0, msgNum=0, wordCounter=0;
-    string tempStr="";
-   
+    ifstream fileInput("szoveg.txt");
 
-    cout<<"outside of input"<<endl;
+    int wordCounter=0;
+    string tempStr="";
+
+
     // Get input from file
     int lineNum=0;
     while(!fileInput.eof()) {
-        cout<<"inside of input"<<endl;
+        int mghNum=0, msgNum=0;
         getline(fileInput,tempStr);
-        lineNum++;
-        cout<<tempStr<<endl;
+       // cout<<tempStr<<endl;
         char mghCond[5]={'a','e','i','o','u'};
+        char msgCond[21]={'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','z','y'};
 
         for(int k=0; k<tempStr.length();k++){
             char charTemp=tempStr[k];
             for(int c=0; c<5;c++){
                 if(charTemp==mghCond[c]){
                     mghNum++;
-                }else{
+                }
+            }
+            for(int c=0; c<21;c++){
+                if(charTemp==msgCond[c]){
                     msgNum++;
                 }
             }
         }
-        cout<<"     mgh "<<mghNum<<endl;
-        cout<<"     msg "<<msgNum<<endl;
-        
+        // cout<<"     mgh "<<mghNum<<endl;
+        // cout<<"     msg "<<msgNum<<endl;
+
         if (mghNum>msgNum) {
             cout<<tempStr<<" ";
             wordCounter++;
         }
+
+        lineNum++;
     }
-    cout<<lineNum<<endl;
-    int percentage=0;
-    // percentage=wordCounter/lineNum;
-    
+
+    double percentage= double(wordCounter)/double(lineNum);
+    percentage*=100;    // 1.00946
+    percentage=int(percentage);
+
+    cout<<endl; cout<<endl;
     cout<<"3. feladat"<<endl;
     cout<<"Ennyi darab: "<<wordCounter<<endl;
     cout<<"Osszes darab: "<<lineNum<<endl;
-    cout<<"Ennyi szazalek: "<<percentage<<endl;
+    cout<<"Ennyi szazalek: "<<percentage<<"%"<<endl;
+    fileInput.close();
 }
 
 int main(){
     // Get input from file
-    //  int i=0;
-    //  while(!fileInput.eof()) {
-    //getline(fileInput,<array>[i]);
-    //     i++;
+  //  int i=0;
+  //  while(!fileInput.eof()) {
+        //getline(fileInput,ip[i]);
+   //     i++;
     //}
-    
-    
+
+
     t1();
     cout<<endl;
     t2();
     cout<<endl;
     t3();
+
+    fileInput.close();
     return 0;
 }
