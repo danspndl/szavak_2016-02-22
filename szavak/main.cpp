@@ -107,10 +107,13 @@ void t3(){
     fileInput.close();
 }
 
+
+
+string fiveChar[1000];
+
+
 void t4(){
     ifstream fileInput("szoveg.txt");
-
-    string fiveChar[1000];
 
     // Get input from file
     int fiveCharCounter=0;
@@ -127,7 +130,7 @@ void t4(){
     cout<<"4. feladat"<<endl;
     cout<<"Adjon meg 3 karaktert: ";
     cin>>userInput; // DEBUG "isz" or "obo"
-    if (userInput.length()<=3 || userInput.length()>3) {
+    if (userInput.length()<=3 || userInput.length()>=3) {
         cout<<"Adjon meg 3 karaktert: ";
         cin>>userInput;
     }
@@ -152,6 +155,15 @@ void t4(){
 }
 
 
+void t5(){
+    ofstream fileOutput("letra.txt");
+    
+//    fileOutput<<"|var|\n";
+    
+    
+    fileOutput.close();
+}
+
 int main(){
     // Get input from file
   //  int i=0;
@@ -168,6 +180,9 @@ int main(){
     t3();
     cout<<endl;
     t4();
-
+    cout<<endl;
+    t5();
+    
+    
     return 0;
 }
