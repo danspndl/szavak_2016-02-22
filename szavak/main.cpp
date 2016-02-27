@@ -12,8 +12,6 @@
 
 using namespace std;
 
-ifstream fileInput("szoveg.txt");
-
 void t1(){
     string userInput="";
     char charCond[5]={'a','e','i','o','u'};
@@ -22,7 +20,7 @@ void t1(){
     cout<<"1. feladat"<<endl;
     cout<<"Type in a word: ";
     cin>>userInput;
-    userInput="loremipsum"; // DEBUG
+    // userInput="loremipsum"; // DEBUG
 
     for(int i=0; i<userInput.length();i++){
         char charTemp=userInput[i];
@@ -109,6 +107,51 @@ void t3(){
     fileInput.close();
 }
 
+void t4(){
+    ifstream fileInput("szoveg.txt");
+
+    string fiveChar[1000];
+
+    // Get input from file
+    int fiveCharCounter=0;
+    while(!fileInput.eof()) {
+        string tempStr="";
+        getline(fileInput,tempStr);
+        if(tempStr.length()==5){
+            fiveChar[fiveCharCounter]=tempStr;
+            fiveCharCounter++;
+        }
+    }
+    
+    string userInput="";
+    cout<<"4. feladat"<<endl;
+    cout<<"Adjon meg 3 karaktert: ";
+    cin>>userInput; // DEBUG "isz" or "obo"
+    if (userInput.length()<=3 || userInput.length()>3) {
+        cout<<"Adjon meg 3 karaktert: ";
+        cin>>userInput;
+    }
+//    userInput="isz";  // DEBUG
+    
+    bool exists=false;
+    
+    for (int c=0; c<fiveCharCounter; c++) {
+        // If the fiveChar element contains userInput
+        if (fiveChar[c].find(userInput)!=string::npos) {
+            cout<<fiveChar[c]<<" ";
+            exists=true;
+        }
+    }
+    
+    if (exists==false) {
+        cout<<"404";
+    }
+    
+    cout<<endl;
+    fileInput.close();
+}
+
+
 int main(){
     // Get input from file
   //  int i=0;
@@ -123,7 +166,8 @@ int main(){
     t2();
     cout<<endl;
     t3();
+    cout<<endl;
+    t4();
 
-    fileInput.close();
     return 0;
 }
